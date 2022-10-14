@@ -8,6 +8,16 @@ async function userAuth(req, res, next){
     //if !session = return usuário não está logado
     //achar user => res.locals.user = user;
     //if (!user) return status 401
+    try {
+        const newSession = await connection.query(`SELECT * FROM sessions WHERE "userToken" = $1`, [token]);
+        if(!newSession.rows){
+            return res.sendStatus(401);
+        }
+        res.locals.userId = newSession.rows[0].userId;
+
+    } catch (error) {
+        return res.sendStatus(500);
+    }
     next();
 }
 
