@@ -51,12 +51,12 @@ async function deleteUrl(req, res){
     const { id } = req.params;
     const { userId } = res.locals; 
     try {
-        const urlValidation = (await connection.query(`
-        SELECT id FROM urls WHERE id = $1;`, [id]));
+        const urlValidation = await connection.query(`
+        SELECT id FROM urls WHERE id = $1;`, [id]);
         if(!urlValidation){
             return res.sendStatus(404);
         }
-        const url = (await connection.query(`SELECT id FROM urls WHERE id = $1 AND "userId" = $2`, [id, userId]));
+        const url = await connection.query(`SELECT id FROM urls WHERE id = $1 AND "userId" = $2`, [id, userId]);
         if(!url){ return res.sendStatus(401)}
         await connection.query(`DELETE FROM urls WHERE id = $1`, [id]);
         return res.sendStatus(204);
