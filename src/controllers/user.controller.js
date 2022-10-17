@@ -17,7 +17,7 @@ async function showProfile(req, res){
         }
         url.forEach(el => {
             body.visitCount += el.visitCount;
-            body.shortenedUrls.push({
+            shortenedUrls.push({
                 id: el.id,
                 shortUrl: el.shortUrl,
                 url: el.url,
