@@ -6,10 +6,10 @@ async function getShortUrlByIdAuth(req, res, next){
         const idValidation = await connection.query(`
             SELECT * FROM urls
             WHERE id = $1;`,
-            [4]
+            [id]
         );
         if(!idValidation){
-            return res.status(404).send('ID not found!');
+            return res.status(409).send('ID not found!');
         }
         res.locals.urlObject = idValidation.rows[0];
     } catch (error) {
