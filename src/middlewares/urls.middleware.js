@@ -19,9 +19,9 @@ async function getShortUrlByIdAuth(req, res, next){
 }
 
 async function openShortUrlAuth(req, res, next){
-    const { shorturl } = req.params;
+    const { shortUrl } = req.params;
     try {
-        const urlValidation = await connection.query(`SELECT * FROM urls WHERE shorturl = $1`, [shorturl]);
+        const urlValidation = await connection.query(`SELECT * FROM urls WHERE shorturl = $1`, [shortUrl]);
         if(!urlValidation){
             return res.status(404).send('Url não encontrada!');
         }
