@@ -1,4 +1,4 @@
-import connection from "../database/db";
+import connection from "../database/db.js";
 
 async function showRanking(req, res) {
     try {

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import Joi from 'joi';
-import connection from '../database/db';
+import connection from '../database/db.js';
 import { v4 as uuid } from 'uuid';
 
 async function signUpAccount(req, res){

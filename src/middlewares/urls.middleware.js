@@ -1,4 +1,4 @@
-import connection from "../database/db";
+import connection from "../database/db.js";
 
 async function getShortUrlByIdAuth(req, res, next){
     const { id } = req.params;

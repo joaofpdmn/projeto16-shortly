@@ -1,4 +1,4 @@
-import connection from "../database/db";
+import connection from "../database/db.js";
 
 async function userAuth(req, res, next){
     const { authorization } = req.headers;

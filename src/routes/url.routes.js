@@ -1,7 +1,7 @@
 import express from 'express';
-import { deleteUrl, getUrlsById, openShortUrl, shortenUrl } from '../controllers/urls.controller';
-import { userAuth } from '../middlewares/auth.middleware';
-import { getShortUrlByIdAuth, openShortUrlAuth } from '../middlewares/urls.middleware';
+import { deleteUrl, getUrlsById, openShortUrl, shortenUrl } from '../controllers/urls.controller.js';
+import { userAuth } from '../middlewares/auth.middleware.js';
+import { getShortUrlByIdAuth, openShortUrlAuth } from '../middlewares/urls.middleware.js';
 
 const urlsRouter = express.Router();
 const urlsNoAuthRouter = express.Router();

@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { authRouter } from './routes/auth.routes';
-import { urlsNoAuthRouter, urlsRouter } from './routes/url.routes';
-import { userRouter } from './routes/user.routes';
+import { authRouter } from './routes/auth.routes.js';
+import { urlsNoAuthRouter, urlsRouter } from './routes/url.routes.js';
+import { userRouter } from './routes/user.routes.js';
 const app = express();
 app.use(cors());
 app.use(express.json());
