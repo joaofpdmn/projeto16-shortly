@@ -39,9 +39,10 @@ async function getUrlsById(req, res){
 
 async function openShortUrl(req, res){
     const { visitcount, url } = res.locals.urlObj;
-    visitcount++;
+    let newVisitCount = visitcount + 1;
+    await connection.query('INSERT INTO urls (visitcount) VALUES ($1)',[newVisitCount]);
     res.redirect(url)
-    return;
+    return
 }
 
 async function deleteUrl(req, res){
