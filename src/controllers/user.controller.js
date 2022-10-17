@@ -17,16 +17,8 @@ async function showProfile(req, res){
             visitCount: 0,
             shortenedUrls: [],
         }
-        url.forEach(el => {
-            body.visitCount += el.visitCount;
-            shortenedUrls.push({
-                id: el.id,
-                shortUrl: el.shortUrl,
-                url: el.url,
-                visitCount: el.visitCount,
-            });
-        })
-        return res.status(200).send(body);
+        
+        return res.status(200).send(url);
     } catch (error) {
         return res.sendStatus(500);
     }
