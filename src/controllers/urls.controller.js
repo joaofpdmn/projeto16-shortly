@@ -5,9 +5,7 @@ async function shortenUrl(req, res) {
     const { url } = req.body;
     const shortUrl = nanoid(8);
     const userId = res.locals.userId;
-    if (!valid) {
-        return sendStatus(422);
-    }
+    
     try {
         await connection.query(`
             INSERT INTO urls
