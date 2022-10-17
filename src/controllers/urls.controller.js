@@ -7,13 +7,7 @@ async function shortenUrl(req, res) {
     const userId = res.locals.userId;
     
     try {
-        await connection.query(`
-            INSERT INTO urls
-            (url, shortUrl, userId)  
-            VALUES
-            ($1, $2, $3);`,
-            [url, shortUrl, userId]
-        );
+        
         res.status(201).send(shortUrl);
     } catch (error) {
         return error;
