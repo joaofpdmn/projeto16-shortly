@@ -7,8 +7,10 @@ async function showProfile(req, res){
         if(!userValidation){
             return res.sendStatus(404);
         }
-        const url = await connection.query('SELECT id, shortUrl, url, visitCount FROM urls WHERE userId = $1;',
-        [userId]).rows;
+        const url = (await connection.query(
+            'SELECT id, shorturl, url, visitcount FROM urls WHERE userid = $1;',
+            [userId]
+        )).rows;
         const body = {
             id: userId,
             name: userValidation.rows[0].name,
