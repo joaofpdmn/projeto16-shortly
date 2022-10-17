@@ -8,7 +8,7 @@ async function getShortUrlByIdAuth(req, res, next){
             WHERE id = $1;`,
             [4]
         );
-        if(!idValidation.rows[0].length){
+        if(!idValidation){
             return res.status(404).send('ID not found!');
         }
         res.locals.urlObject = idValidation.rows[0];
@@ -22,7 +22,7 @@ async function openShortUrlAuth(req, res, next){
     const { shortUrl } = req.params;
     try {
         const urlValidation = await connection.query(`SELECT * FROM urls WHERE "shortUrl" = $1`, [shortUrl]);
-        if(!urlValidation.rows){
+        if(!urlValidation){
             return res.status(404).send('Url não encontrada!');
         }
         res.locals.url = urlValidation.rows[0];
