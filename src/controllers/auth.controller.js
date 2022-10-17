@@ -21,7 +21,7 @@ async function signUpAccount(req, res){
             password: Joi.string().min(1).required().trim(),
         });
         const validate = await schema.validateAsync({ name, email, password });
-        connection.query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3)`, [name, email, password]);
+        await connection.query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3)`, [name, email, password]);
         //adicionar a conta ao DB
     } catch (error) {
         res.sendStatus(422);
