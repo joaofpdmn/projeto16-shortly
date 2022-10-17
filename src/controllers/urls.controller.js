@@ -5,15 +5,6 @@ async function shortenUrl(req, res) {
     const { url } = req.body;
     const shortUrl = nanoid(8);
     const userId = res.locals.userId;
-    const isValidUrl = urlString => {
-        try {
-            return Boolean(new URL(urlString));
-        }
-        catch (e) {
-            return false;
-        }
-    }
-    const valid = isValidUrl(url);
     if (!valid) {
         return sendStatus(422);
     }
