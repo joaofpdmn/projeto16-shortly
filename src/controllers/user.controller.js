@@ -3,7 +3,7 @@ import connection from "../database/db.js";
 async function showProfile(req, res){
     try {
         const userId = res.locals.userId;
-        const userValidation = await connection.query(`SELECT name FROM users WHERE id = '${userId}'`);
+        const userValidation = await connection.query(`SELECT * FROM users WHERE id = '${userId}'`);
         if(!userValidation){
             return res.sendStatus(404);
         }
@@ -11,7 +11,7 @@ async function showProfile(req, res){
         [userId]);
         const body = {
             id: userId,
-            name: userValidation[0].name,
+            name: userValidation.rows[0].name,
             visitCount: 0,
             shortenedUrls: [],
         }
