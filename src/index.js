@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { authRouter } from './routes/auth.routes.js';
 import { urlsNoAuthRouter, urlsRouter } from './routes/url.routes.js';
 import { userRouter } from './routes/user.routes.js';
+import { rankingRouter } from './routes/ranking.routes.js';
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(authRouter);
 app.use(urlsRouter);
 app.use(urlsNoAuthRouter);
 app.use(userRouter);
+app.use(rankingRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("Server running on port " + process.env.PORT);
