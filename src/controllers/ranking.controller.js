@@ -8,6 +8,7 @@ async function showRanking(req, res) {
         return res.status(200).send(ranking.rows);
     } catch (error) {
         return res.sendStatus(500);
+        //teste
     }
 }
 
