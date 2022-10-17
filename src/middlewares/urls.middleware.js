@@ -8,7 +8,7 @@ async function getShortUrlByIdAuth(req, res, next){
             WHERE id = $1;`,
             [id]
         );
-        if(!idValidation.rows){
+        if(!idValidation.rows.length){
             return res.status(404).send('ID not found!');
         }
         res.locals.urlObject = idValidation.rows[0];
