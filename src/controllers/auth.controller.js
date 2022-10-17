@@ -26,6 +26,7 @@ async function signUpAccount(req, res){
             [name, email, passwordHash]
         );
         //adicionar a conta ao DB
+        //teste
     } catch (error) {
         res.sendStatus(422);
     }
