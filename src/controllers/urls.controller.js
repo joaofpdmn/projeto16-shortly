@@ -12,7 +12,7 @@ async function shortenUrl(req, res) {
             (url, shortUrl, userId)  
             VALUES
             ($1, $2, $3);`,
-            [url, shortUrl, 3]
+            [url, shortUrl, userId]
         );
         res.status(201).send(shortUrl);
     } catch (error) {
