@@ -8,7 +8,7 @@ const authRouter = express.Router();
 
 authRouter.post('/signup', signUpAccount);
 authRouter.post('/signin', loginAccount);
-authRouter.post('/ranking', showRanking);
+authRouter.get('/ranking', showRanking);
 authRouter.get('/urls/:id', getShortUrlByIdAuth, getUrlsById);
 authRouter.get('/urls/open/:shortUrl', openShortUrlAuth, openShortUrl);
 
