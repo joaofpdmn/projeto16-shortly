@@ -42,7 +42,7 @@ async function loginAccount(req, res) {
             return sendStatus(401);
         }
         const token = uuid();
-        const userId = loginQuery.rows[0].userId;
+        const userId = loginQuery.rows[0].id;
         //inserir token e email no db das sessoes
         await connection.query(`INSERT INTO sessions (userId, token) VALUES ($1, $2)
         `, [userId, token]);
