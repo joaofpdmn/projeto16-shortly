@@ -7,7 +7,7 @@ async function showProfile(req, res){
         if(!userValidation){
             return res.sendStatus(404);
         }
-        const url = (await connection.query(
+        const urlArray = (await connection.query(
             'SELECT id, shorturl, url, visitcount FROM urls WHERE userid = $1;',
             [userId]
         )).rows;
@@ -17,8 +17,11 @@ async function showProfile(req, res){
             visitCount: 0,
             shortenedUrls: [],
         }
-        
-        return res.status(200).send(url);
+        urlArray.forEach(el => {
+            body.visitCount += el.visitCount;
+            
+        })
+        return res.status(200).send(body);
     } catch (error) {
         return res.sendStatus(500);
     }
