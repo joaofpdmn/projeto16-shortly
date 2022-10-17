@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 async function shortenUrl(req, res) {
     const { url } = req.body;
-    const shortUrl = nanoid(10);
+    const shortUrl = nanoid(8);
     const userId = res.locals.userId;
     const isValidUrl = urlString => {
         try {
@@ -20,10 +20,10 @@ async function shortenUrl(req, res) {
     try {
         await connection.query(`
             INSERT INTO urls
-            ("userId", "originalUrl", "shortUrl")  
+            ("url", "shortUrl", "userId")  
             VALUES
             ($1, $2, $3);`,
-            [userId, url, shortUrl]
+            [url, shortUrl, userId]
         );
         res.status(201).send(shortUrl);
     } catch (error) {
