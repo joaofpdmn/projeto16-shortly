@@ -34,5 +34,4 @@ async function showProfile(req, res){
 
 export {
     showProfile,
-    
 }
