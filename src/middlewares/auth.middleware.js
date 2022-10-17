@@ -9,7 +9,7 @@ async function userAuth(req, res, next){
         if(!newSession.rows){
             return res.sendStatus(401);
         }
-        res.locals.userId = newSession.rows[0].id;
+        res.locals.userId = newSession.rows[0].userid;
 
     } catch (error) {
         return res.sendStatus(500);
