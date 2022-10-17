@@ -9,7 +9,7 @@ async function getShortUrlByIdAuth(req, res, next){
             [id]
         );
         if(!idValidation){
-            return res.status(409).send('ID not found!');
+            return res.status(404).send('ID not found!');
         }
         res.locals.urlObject = idValidation.rows[0];
     } catch (error) {

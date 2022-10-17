@@ -33,9 +33,8 @@ async function shortenUrl(req, res) {
 }
 
 async function getUrlsById(req, res){
-    const { userId, url, shortUrl } = res.locals.urlObject;
-    res.send({ userId, shortUrl, url });
-    return;
+    const { id, url, shortUrl } = res.locals.urlObject;
+    return res.send({ id, shortUrl, url });
 }
 
 async function openShortUrl(req, res){
