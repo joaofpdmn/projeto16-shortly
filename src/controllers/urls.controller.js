@@ -38,13 +38,10 @@ async function getUrlsById(req, res){
 }
 
 async function openShortUrl(req, res){
-    const { userId, url} = res.locals.url;
-    try {
-        await connection.query(`INSERT INTO access ("accessId") VALUES ($1)`, [userId]);
-        res.redirect(url);
-    } catch (error) {
-        return res.sendStatus(500);
-    }
+    const { visitcount, url } = res.locals.urlObj;
+    visitcount++;
+    res.redirect(url)
+    return;
 }
 
 async function deleteUrl(req, res){
