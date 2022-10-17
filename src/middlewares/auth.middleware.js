@@ -5,7 +5,7 @@ async function userAuth(req, res, next){
     const token = authorization?.replace('Bearer ', '');
     if(!token) return res.status(401).send('Problema com token!');
     try {
-        const newSession = await connection.query(`SELECT * FROM sessions WHERE "token" = $1`, [token]);
+        const newSession = await connection.query(`SELECT * FROM sessions WHERE token = $1`, [token]);
         if(!newSession.rows){
             return res.sendStatus(401);
         }
