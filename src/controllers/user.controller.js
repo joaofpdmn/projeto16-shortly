@@ -15,15 +15,7 @@ async function showProfile(req, res){
             visitCount: 0,
             shortenedUrls: [],
         }
-        url.map(el => {
-            body.visitCount += url.visitCount;
-            body.shortenedUrls.push({
-                id: el.id,
-                shortUrl: el.shortUrl,
-                url: el.url,
-                visitCount: el.visitCount,
-            });
-        })
+        
         return res.status(200).send(body);
     } catch (error) {
         return res.sendStatus(500);
