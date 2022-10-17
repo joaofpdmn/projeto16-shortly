@@ -9,7 +9,7 @@ async function shortenUrl(req, res) {
     try {
         await connection.query(`
             INSERT INTO urls
-            ("url", "shortUrl", "userId")  
+            (url, shortUrl, userId)  
             VALUES
             ($1, $2, $3);`,
             [url, shortUrl, userId]
