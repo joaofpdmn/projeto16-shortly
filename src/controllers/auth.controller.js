@@ -22,7 +22,7 @@ async function signUpAccount(req, res){
         });
         const validate = await schema.validateAsync({ name, email, password });
         await connection.query(
-            'INSERT INTO users (name, email, "password") VALUES ($1, $2, $3);',
+            'INSERT INTO users (name, email, password) VALUES ($1, $2, $3);',
             [name, email, passwordHash]
         );
         //adicionar a conta ao DB
